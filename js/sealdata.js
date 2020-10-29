@@ -88,6 +88,15 @@ const YFI_ADDR = {
   pricetick: 'yearn-finance',
 };
 
+const KPR_ADDR = {
+  token: '0x1ceb5cb57c4d4e2b2433641b95dd330a33185a44',
+  pair: '0x1bea99238fac1db097995fb58974e1a5970c9b63',
+  stake: '0xeb388c4f5dce3586475ff6c1325e727b66214de7',
+  tick: 'KPR',
+  denom: 1e18,
+  pricetick: 'keep3rv1',
+};
+
 const STAKING_POOL_ABI = [
   {
     inputs: [
