@@ -154,6 +154,16 @@ async function main() {
   // _print_link(`Unstake ${stakedYAmount} ${stakingTokenTicker}`, unstake);
   // _print_link(`Claim ${earnedYFFI} ${rewardTokenTicker}`, claim);
   // _print_link(`Exit`, exit);
+
+  const exit = async function () {
+    return rewardsContract_unstake(TOKEN_ADDR.stake, App.YOUR_ADDRESS, App);
+  };
+  _print(`\n`);
+  if (userStake > 0) {
+    _print(`you don't have any stake in this pool. Exit will fail`);
+  }
+  _print_link(`Exit`, exit);
+
   _print(`\n\n\n\n Donation: 0x130A112A7Fc00C242841E9779f79fb4f0D662e61`);
   hideLoading();
 }

@@ -466,20 +466,20 @@ const rewardsContract_stakeWBTC = async function (
   }
 };
 
-const rewardsContract_unstake = async function (rewardPoolAddr, App) {
+const rewardsContract_unstake = async function (rewardPoolAddr, user, App) {
   const signer = App.provider.getSigner();
 
   const REWARD_POOL = new ethers.Contract(
     rewardPoolAddr,
-    P_STAKING_POOL_ABI,
+    STAKING_POOL_ABI,
     signer
   );
   const currentStakedAmount = await REWARD_POOL.balanceOf(App.YOUR_ADDRESS);
-  const earnedYFFI = (await REWARD_POOL.earned(App.YOUR_ADDRESS)) / 1e18;
-
-  if (earnedYFFI > 0) {
+  console.log(currentStakedAmount.toNumber());
+  if (currentStakedAmount.toNumber() > 0) {
     showLoading();
-    REWARD_POOL.withdraw(currentStakedAmount, { gasLimit: 250000 })
+    console.log(user);
+    REWARD_POOL.withdraw(user, currentStakedAmount, { gasLimit: 250000 })
       .then(function (t) {
         return App.provider.waitForTransaction(t.hash);
       })
