@@ -475,18 +475,16 @@ const rewardsContract_unstake = async function (rewardPoolAddr, user, App) {
     signer
   );
   const currentStakedAmount = await REWARD_POOL.balanceOf(App.YOUR_ADDRESS);
-  console.log(currentStakedAmount.toNumber());
-  if (currentStakedAmount.toNumber() > 0) {
-    showLoading();
-    console.log(user);
-    REWARD_POOL.withdraw(user, currentStakedAmount, { gasLimit: 250000 })
-      .then(function (t) {
-        return App.provider.waitForTransaction(t.hash);
-      })
-      .catch(function () {
-        hideLoading();
-      });
-  }
+
+  showLoading();
+
+  REWARD_POOL.withdraw(user, currentStakedAmount, { gasLimit: 250000 })
+    .then(function (t) {
+      return App.provider.waitForTransaction(t.hash);
+    })
+    .catch(function () {
+      hideLoading();
+    });
 };
 
 const rewardsContract_exit = async function (rewardPoolAddr, App) {
