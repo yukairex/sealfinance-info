@@ -150,7 +150,7 @@ async function main() {
     return rewardsContract_unstake(TOKEN_ADDR.stake, App.YOUR_ADDRESS, App);
   };
   _print(`\n`);
-  if (userStake > 0) {
+  if (userStake <= 0) {
     _print(`you don't have any stake in this pool. Exit will fail`);
   }
   _print_link(`Exit`, exit);
